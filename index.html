@@ -1,151 +1,255 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Happy Birthday Izza! 🎂</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'dancing': ['"Dancing Script"', 'cursive'],
-                        'poppins': ['Poppins', 'sans-serif'],
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              dancing: ['"Dancing Script"', "cursive"],
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body class="min-h-screen flex justify-center items-center bg-gradient-to-br from-[#4a4a5a] via-[#3d3d4d] to-[#2d2d3d] font-['Poppins'] overflow-hidden">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="min-h-screen flex justify-center items-center bg-gradient-to-br from-[#4a4a5a] via-[#3d3d4d] to-[#2d2d3d] font-['Poppins'] overflow-hidden"
+  >
     <!-- Audio -->
     <audio id="birthdayMusic" loop>
-        <source src="musikHBD.mp3" type="audio/mpeg">
+      <source src="musikHBD.mp3" type="audio/mpeg" />
     </audio>
 
-    <div class="flex flex-col items-center justify-center p-5 relative w-full max-w-[400px]" id="mainContainer">
-        <!-- Glow effect behind cake -->
-        <div class="glow absolute top-20 w-[150px] h-[150px] rounded-full pointer-events-none transition-opacity duration-500" id="glow"></div>
-        
-        <!-- Birthday Cake -->
-        <div class="cake-container relative flex flex-col items-center mb-8">
-            <!-- Candle -->
-            <div class="candle relative flex flex-col items-center z-10">
-                <div class="candle-body w-3 h-[50px] rounded-sm relative overflow-hidden">
-                    <div class="candle-stripes absolute inset-0"></div>
-                </div>
-                <div class="flame-container absolute -top-[35px] flex flex-col items-center cursor-pointer p-2.5 transition-all duration-300" id="flame">
-                    <div class="flame w-3.5 h-[30px] relative">
-                        <div class="flame-inner absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1.5 h-[15px]"></div>
-                    </div>
-                    <div class="flame-glow absolute -top-1 left-1/2 -translate-x-1/2 w-10 h-[50px] pointer-events-none"></div>
-                </div>
+    <div
+      class="flex flex-col items-center justify-center p-5 relative w-full max-w-[400px]"
+      id="mainContainer"
+    >
+      <!-- Glow effect behind cake -->
+      <div
+        class="glow absolute top-20 w-[150px] h-[150px] rounded-full pointer-events-none transition-opacity duration-500"
+        id="glow"
+      ></div>
+
+      <!-- Birthday Cake -->
+      <div class="cake-container relative flex flex-col items-center mb-8">
+        <!-- Candle -->
+        <div class="candle relative flex flex-col items-center z-10">
+          <!-- Candle holder -->
+          <div class="candle-holder absolute bottom-0 w-5 h-3 rounded-t-sm z-[1]"></div>
+          <div
+            class="candle-body w-3 h-[50px] rounded-sm relative overflow-hidden"
+          >
+            <div class="candle-stripes absolute inset-0"></div>
+          </div>
+          <div
+            class="flame-container absolute -top-[35px] flex flex-col items-center cursor-pointer p-2.5 transition-all duration-300"
+            id="flame"
+          >
+            <div class="flame w-3.5 h-[30px] relative">
+              <div
+                class="flame-inner absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1.5 h-[15px]"
+              ></div>
             </div>
-            
-            <!-- Cake layers -->
-            <div class="cake relative flex flex-col items-center">
-                <!-- Frosting drips -->
-                <div class="frosting absolute top-0 w-[200px] h-10 z-[5]">
-                    <div class="drip drip-1"></div>
-                    <div class="drip drip-2"></div>
-                    <div class="drip drip-3"></div>
-                    <div class="drip drip-4"></div>
-                    <div class="drip drip-5"></div>
-                    <div class="drip drip-6"></div>
-                </div>
-                
-                <!-- Layer 1 (top) -->
-                <div class="cake-layer layer-1 w-[200px] h-[35px] rounded-t-lg rounded-b z-[4]">
-                    <div class="layer-shadow"></div>
-                </div>
-                
-                <!-- Layer 2 (middle) -->
-                <div class="cake-layer layer-2 w-[210px] h-[30px] -mt-0.5 z-[3]">
-                    <div class="layer-shadow"></div>
-                </div>
-                
-                <!-- Layer 3 (bottom) -->
-                <div class="cake-layer layer-3 w-[220px] h-[35px] -mt-0.5 rounded-b-lg z-[2]">
-                    <div class="layer-shadow"></div>
-                </div>
+            <div
+              class="flame-glow absolute -top-1 left-1/2 -translate-x-1/2 w-10 h-[50px] pointer-events-none"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Cake layers -->
+        <div class="cake relative flex flex-col items-center">
+          <!-- Frosting drips -->
+          <div class="frosting absolute top-0 w-[200px] h-10 z-[5]">
+            <div class="drip drip-1"></div>
+            <div class="drip drip-2"></div>
+            <div class="drip drip-3"></div>
+            <div class="drip drip-4"></div>
+            <div class="drip drip-5"></div>
+            <div class="drip drip-6"></div>
+            <div class="drip drip-7"></div>
+          </div>
+
+          <!-- Cherry decorations - positioned to avoid candle -->
+          <div class="cherries absolute -top-1 w-[200px] z-[6] flex justify-between px-3">
+            <div class="cherry"></div>
+            <div class="cherry" style="margin-left: auto; margin-right: 20px;"></div>
+          </div>
+
+          <!-- Layer 1 (top) with sprinkles -->
+          <div
+            class="cake-layer layer-1 w-[200px] h-[40px] rounded-t-lg rounded-b z-[4] relative"
+          >
+            <!-- Sprinkles -->
+            <div class="sprinkles">
+              <div class="sprinkle s1"></div>
+              <div class="sprinkle s2"></div>
+              <div class="sprinkle s3"></div>
+              <div class="sprinkle s4"></div>
+              <div class="sprinkle s5"></div>
+              <div class="sprinkle s6"></div>
             </div>
-            
-            <!-- Cake plate -->
-            <div class="plate w-[250px] h-2 mt-0.5 rounded-b shadow-lg"></div>
+            <!-- Age badge -->
+            <div class="age-badge absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-[#f5f5dc] font-bold text-lg tracking-wider">16</div>
+            <div class="layer-shadow"></div>
+          </div>
+
+          <!-- Layer 2 (middle) -->
+          <div class="cake-layer layer-2 w-[215px] h-[35px] -mt-0.5 z-[3] relative">
+            <div class="cream-line"></div>
+            <div class="layer-shadow"></div>
+          </div>
+
+          <!-- Layer 3 (bottom) -->
+          <div
+            class="cake-layer layer-3 w-[230px] h-[40px] -mt-0.5 rounded-b-lg z-[2] relative"
+          >
+            <div class="cream-dots"></div>
+            <div class="layer-shadow"></div>
+          </div>
         </div>
+
+        <!-- Cake plate -->
+        <div class="plate w-[260px] h-3 mt-0.5 rounded-b shadow-lg"></div>
         
-        <!-- Birthday text -->
-        <div class="text-center mt-5">
-            <h1 class="text-[28px] font-light text-[#b0b0b0] tracking-wider mb-1 animate-fadeInUp">happy birthday!</h1>
-            <h2 class="text-[22px] font-light text-[#909090] tracking-[4px] animate-fadeInUpDelay">Izza</h2>
+        <!-- Plate stand -->
+        <div class="plate-stand w-[200px] h-1 mt-0 rounded-b"></div>
+      </div>
+
+      <!-- Birthday text -->
+      <div class="text-center mt-5">
+        <h1
+          class="text-[23px] font-bold text-[#b0b0b0] tracking-wider mb-1 animate-fadeInUp"
+        >
+          Happy 16th Birthday!
+        </h1>
+        <h2
+          class="text-[22px] font-light text-[#909090] tracking-[4px] animate-fadeInUpDelay"
+        >
+          Izza
+        </h2>
+        <!-- <p class="text-[12px] text-[#707070] mt-2 animate-fadeInUpDelay">🎉 Sweet Sixteen 🎉</p> -->
+      </div>
+
+      <!-- Swipe instruction -->
+      <div class="mt-10 flex flex-col items-center transition-opacity duration-500" id="instruction">
+        <div class="swipe-arrow mb-2">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-[#808080] animate-swipe-up">
+            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
-        
-        <!-- Tap instruction -->
-        <p class="mt-10 text-sm text-[#707070] animate-pulse transition-opacity duration-500" id="instruction">tap the flame to blow the candle 🎈</p>
-        
-        <!-- Confetti container -->
-        <div class="fixed inset-0 pointer-events-none z-50" id="confetti"></div>
+        <p class="text-sm text-[#707077]"> tiup lilin sambil swipe ke atas, Za!</p>
+      </div>
+
+      <!-- Confetti container -->
+      <div class="fixed inset-0 pointer-events-none z-50" id="confetti"></div>
     </div>
 
     <!-- Birthday Card Overlay -->
-    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] opacity-0 invisible transition-all duration-700 ease-out flex items-center justify-center p-6" id="cardOverlay">
-        <div class="birthday-card relative w-full max-w-[300px] overflow-hidden bg-[#3a3a4a] rounded-xl p-6 shadow-2xl transform scale-0 transition-all duration-1000 ease-out" id="birthdayCard">
-            
-            <!-- Subtle top accent line -->
-            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#f5f5dc]/40 to-transparent"></div>
-            
-            <!-- Card content -->
-            <div class="relative z-10 text-center">
-                
-                <!-- Title -->
-                <h2 class="font-['Dancing_Script'] text-3xl text-[#f5f5dc] mb-1 animate-fadeInUp">
-                    Happy Birthday
-                </h2>
-                
-                <!-- Name -->
-                <h3 class="font-['Poppins'] text-lg font-light text-[#a0a090] tracking-widest mb-5 animate-fadeInUpDelay">
-                    Izza
-                </h3>
-                
-                <!-- Photo Gallery -->
-                <div class="mb-5">
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="aspect-square rounded-lg overflow-hidden animate-photo-1">
-                            <img src="foto1.jpg" alt="Memory 1" class="w-full h-full object-cover">
-                        </div>
-                        <div class="aspect-square rounded-lg overflow-hidden animate-photo-2">
-                            <img src="foto2.jpg" alt="Memory 2" class="w-full h-full object-cover">
-                        </div>
-                        <div class="aspect-square rounded-lg overflow-hidden animate-photo-3">
-                            <img src="foto3.jpg" alt="Memory 3" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Message -->
-                <p class="text-[#909088] text-sm leading-relaxed mb-5 animate-fade-in-up font-light">
-                    Semoga kebahagiaan selalu menyertaimu di hari spesial ini dan seterusnya ✨
-                </p>
-                
-                <!-- Sender -->
-                <p class="text-[#707068] text-xs mb-5 animate-fade-in-up">
-                    — Penguasa Lantai 1
-                </p>
-                
-                <!-- Close button -->
-                <button class="border border-[#606058] text-[#b0b0a0] px-6 py-2 rounded-full text-sm hover:bg-[#505050] hover:text-[#f5f5dc] transition-all duration-300" id="closeCard">
-                    Tutup
-                </button>
+    <div
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] opacity-0 invisible transition-all duration-700 ease-out flex items-center justify-center p-6"
+      id="cardOverlay"
+    >
+      <div
+        class="birthday-card relative w-full max-w-[300px] overflow-hidden bg-[#3a3a4a] rounded-xl p-6 shadow-2xl transform translate-y-full opacity-0 transition-all duration-700 ease-out"
+        id="birthdayCard"
+      >
+        <!-- Subtle top accent line -->
+        <div
+          class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#f5f5dc]/40 to-transparent"
+        ></div>
+
+        <!-- Card content -->
+        <div class="relative z-10 text-center">
+          <!-- Title -->
+          <h2
+            class="font-['Dancing_Script'] text-3xl text-[#f5f5dc] mb-1 animate-fadeInUp"
+          >
+            Happy Birthday
+          </h2>
+
+          <!-- Name -->
+          <h3
+            class="font-['Poppins'] text-lg font-light text-[#a0a090] tracking-widest mb-5 animate-fadeInUpDelay"
+          >
+            Izza
+          </h3>
+
+          <!-- Photo Gallery -->
+          <div class="mb-5">
+            <div class="grid grid-cols-3 gap-2">
+              <div
+                class="aspect-square rounded-lg overflow-hidden animate-photo-1"
+              >
+                <img
+                  src="foto1.jpeg"
+                  alt="Memory 1"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div
+                class="aspect-square rounded-lg overflow-hidden animate-photo-2"
+              >
+                <img
+                  src="foto2.png"
+                  alt="Memory 2"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div
+                class="aspect-square rounded-lg overflow-hidden animate-photo-3"
+              >
+                <img
+                  src="foto3.jpeg"
+                  alt="Memory 3"
+                  class="w-full h-full object-cover"
+                />
+              </div>
             </div>
+          </div>
+
+          <!-- Message -->
+          <p
+            class="text-[#909088] text-[12px] leading-relaxed mb-5 animate-fade-in-up font-light"
+          >
+            Sorry kalau kami telat ngasih ucapan ini, semoga kebahagiaan selalu mengiringi
+            setiap langkah kau. Semoga semua impian dan harapanmu di usia 16 ini terwujud, dan
+            hidup kau disertai keberuntungan. Semoga lekas
+            sembuh ya, sehat selalu! ✨💪 <br> Wish You All The Best!!!
+
+          </p>
+
+          <!-- Sender -->
+          <p class="text-[#707068] text-xs mb-5 animate-fade-in-up">
+            — Penguasa Lantai 1
+          </p>
+
+          <!-- Close button -->
+          <button
+            class="border border-[#606058] text-[#b0b0a0] px-6 py-2 rounded-full text-sm hover:bg-[#505050] hover:text-[#f5f5dc] transition-all duration-300"
+            id="closeCard"
+          >
+            Tutup
+          </button>
         </div>
+      </div>
     </div>
-    
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

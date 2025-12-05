@@ -8,15 +8,48 @@ const cardOverlay = document.getElementById('cardOverlay');
 const birthdayCard = document.getElementById('birthdayCard');
 const closeCard = document.getElementById('closeCard');
 const birthdayMusic = document.getElementById('birthdayMusic');
+const mainContainer = document.getElementById('mainContainer');
 
 let isFlameOn = true;
+let touchStartY = 0;
+let touchEndY = 0;
 
-// Blow out the candle when flame is clicked/tapped
-flame.addEventListener('click', blowCandle);
-flame.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    blowCandle();
+// Swipe detection
+mainContainer.addEventListener('touchstart', (e) => {
+    touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+mainContainer.addEventListener('touchend', (e) => {
+    touchEndY = e.changedTouches[0].screenY;
+    handleSwipe();
+}, { passive: true });
+
+// Mouse swipe for desktop
+let mouseStartY = 0;
+let isMouseDown = false;
+
+mainContainer.addEventListener('mousedown', (e) => {
+    mouseStartY = e.screenY;
+    isMouseDown = true;
 });
+
+mainContainer.addEventListener('mouseup', (e) => {
+    if (isMouseDown) {
+        touchStartY = mouseStartY;
+        touchEndY = e.screenY;
+        handleSwipe();
+        isMouseDown = false;
+    }
+});
+
+function handleSwipe() {
+    const swipeDistance = touchStartY - touchEndY;
+    const minSwipeDistance = 50; // Minimum swipe distance in pixels
+    
+    if (swipeDistance > minSwipeDistance && isFlameOn) {
+        blowCandle();
+    }
+}
 
 function blowCandle() {
     if (!isFlameOn) return;
@@ -50,15 +83,12 @@ function showBirthdayCard() {
     
     setTimeout(() => {
         birthdayCard.classList.add('show');
-        createSparkles();
-    }, 200);
+    }, 100);
 }
 
 // Hide birthday card
 function hideBirthdayCard() {
     birthdayCard.classList.remove('show');
-    birthdayCard.style.transform = 'scale(0)';
-    birthdayCard.style.opacity = '0';
     
     // Stop music with fade out
     stopMusic();
@@ -66,8 +96,6 @@ function hideBirthdayCard() {
     setTimeout(() => {
         cardOverlay.classList.add('opacity-0', 'invisible');
         cardOverlay.classList.remove('opacity-100', 'visible');
-        // Reset for next time
-        birthdayCard.style.opacity = '';
         
         // Relight the candle after card closes
         relightCandle();
@@ -119,7 +147,16 @@ function relightCandle() {
     isFlameOn = true;
     flame.classList.remove('off');
     glow.classList.remove('off');
-    instruction.textContent = 'tap to blow again 🎂';
+    
+    // Restore swipe instruction with arrow
+    instruction.innerHTML = `
+        <div class="swipe-arrow mb-2">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-[#808080] animate-swipe-up">
+            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <p class="text-sm text-[#707077]">swipe ke atas lagi, Za! 🎂</p>
+    `;
     instruction.classList.remove('opacity-0');
 }
 
